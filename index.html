@@ -34,20 +34,46 @@
         console.log(sugar);
       }
 
-      const b = 15;
-      const c = 35;
-      const d = 21;
-      const e = 32;
+      const b = 55;
+      const c = 0;
+      const d = 5;
+      const e = 1;
       if (b > c && b > d && b > e) {
+        if (c > d && c > e) {
+          console.log(c);
+        } else {
+          if (d > c && d > e) {
+            console.log(d);
+          } else {
+            console.log(e);
+          }
+        }
+      }
+      if (c > b && c > d && c > e && b > d && b > e) {
         console.log(b);
       }
-      if (c > b && c > d && c > e) {
-        console.log(c);
-      }
-      if (d > c && d > b && d > e) {
+      if (c > b && c > d && c > e && d > b && d > e) {
         console.log(d);
       }
-      if (e > c && e > b && e > d) {
+      if (c > b && c > d && c > e && e > b && e > d) {
+        console.log(e);
+      }
+      if (d > b && d > c && d > e && b > c && b > e) {
+        console.log(b);
+      }
+      if (d > b && d > c && d > e && c > b && c > e) {
+        console.log(c);
+      }
+      if (d > b && d > c && d > e && e > b && e > c) {
+        console.log(e);
+      }
+      if (e > b && e > c && e > d && b > c && b > d) {
+        console.log(b);
+      }
+      if (e > b && e > c && e > d && c > b && c > d) {
+        console.log(c);
+      }
+      if (e > b && e > c && e > d && d > b && d > c) {
         console.log(d);
       }
     </script>
