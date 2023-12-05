@@ -23,8 +23,11 @@
           const oroltText = oroltElement.value;
           const oroltNumber = Number(oroltText);
 
-          if (oroltText % 2) {
-            result = even;
+          const remainder = oroltNumber % 2;
+          if (remainder == 0) {
+            result = "even";
+          } else {
+            result = "odd";
           }
           document.getElementById("garalt").innerText = result;
         }
