@@ -27,6 +27,16 @@
           const num3 = Number(document.getElementById("orolt3").value);
           const num4 = Number(document.getElementById("orolt4").value);
 
+          if (
+            num1 > num2 &&
+            num1 > num3 &&
+            num1 > num4 &&
+            num2 > num3 &&
+            num2 > num4
+          ) {
+            result = num2;
+          }
+
           document.getElementById("garalt").innerText = result;
         }
       </script>
