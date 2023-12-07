@@ -67,6 +67,41 @@
         const month = Number(document.getElementById("month").value); // Element-ee buhleer n avah
 
         let result = "";
+
+        if (
+          month == 1 ||
+          month == 3 ||
+          month == 5 ||
+          month == 7 ||
+          month == 8 ||
+          month == 10 ||
+          month == 12
+        ) {
+          result = 31;
+        } else {
+          if (month == 2) {
+            if (year % 100 === 0) {
+              if (year % 400 === 0) {
+                result = 29;
+              } else {
+                result = 28;
+              }
+            } else {
+              if (year % 4 == 0) {
+                result = 29;
+              } else {
+                result = 28;
+              }
+            }
+          } else {
+            result = 30;
+          }
+        }
+
+        if (month < 1 || month > 12) {
+          result = "Enter correct month, please";
+        }
+
         document.getElementById("garalt").innerText = result; //
       }
     </script>
