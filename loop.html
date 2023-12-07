@@ -57,18 +57,26 @@
 
     <script>
       function doSomething() {
-        const oroltElement = document.getElementById("orolt"); // Element-ee buhleer n avah
-        const oroltText = oroltElement.value; // Element-eesee utgaa avah
-        const oroltNumber = Number(oroltText); // Utgaa too ruu horvuuleh
+        const oroltElement = Number(document.getElementById("orolt").value); // Element-ee buhleer n avah
         let result = 0;
-        let num1 = oroltNumber;
-        for (i = 1; i <= num1; i++) {
-          if (i % 2 == 0) {
-            result = result + i;
-            console.log(i);
-          }
-        }
+        let num1 = oroltElement;
+        /*  for (i = 1; i <= num1; i++) {
+                if (i % 2 == 0) {
+                  result = result + i;
+                  console.log(i);
+                }
+              } */
 
+        for (result = num1; result <= 1000; ) {
+          result = result * num1;
+          console.log(result);
+        }
+        if (num1 <= 1) {
+          result = "боломжгүй";
+        }
+        if (num1 > 1000) {
+          result = "1000-аас доош тоо оруулна уу";
+        }
         document.getElementById("garalt").innerText = result; //
       }
     </script>
