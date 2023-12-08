@@ -57,26 +57,33 @@
 
     <script>
       function doSomething() {
-        const oroltElement = Number(document.getElementById("orolt").value); // Element-ee buhleer n avah
-        let result = 0;
-        let num1 = oroltElement;
+        const num1 = Number(document.getElementById("orolt").value); // Element-ee buhleer n avah
+        // let result = 0;
         /*  for (i = 1; i <= num1; i++) {
                 if (i % 2 == 0) {
                   result = result + i;
                   console.log(i);
                 }
               } */
-
-        for (result = num1; result <= 1000; ) {
-          result = result * num1;
-          console.log(result);
-        }
+        result = "";
         if (num1 <= 1) {
-          result = "боломжгүй";
+          result = "1-ээс дээш тоо оруулна уу.";
         }
         if (num1 > 1000) {
-          result = "1000-аас доош тоо оруулна уу";
+          result = "1000-аас доош тоо оруулна уу.";
         }
+        if (num1 > 1 && num1 < 1000) {
+          let powered = 1;
+          let counter = 0;
+          while (powered < 1000) {
+            powered = powered * num1;
+            counter = counter + 1;
+          }
+          result =
+            num1 + "-ын " + counter + " зэрэг нь 1000-аас их байна: " + powered;
+        }
+
+        //result = powered;
         document.getElementById("garalt").innerText = result; //
       }
     </script>
