@@ -65,7 +65,9 @@
         let sum = 0;
 
         for (i = 0; i < values.length; i++) {
-          sum = sum + Number(values[i]);
+          if (Number(values[i]) % 2 == 0) {
+            sum = sum + Number(values[i]);
+          }
         }
 
         result = sum;
