@@ -64,16 +64,16 @@
         //   result += string[i];
         // }
 
-        // if (string.length == 3 && !isNaN(string)) {
-        //   let digit1 = Number(string[0]);
-        //   let digit2 = Number(string[1]);
-        //   let digit3 = Number(string[2]);
+        if (string.length == 3 && !isNaN(string)) {
+          let digit1 = Number(string[0]);
+          let digit2 = Number(string[1]);
+          let digit3 = Number(string[2]);
 
-        //   sum = digit1 + digit2 + digit3;
-        //   result = "цифрүүдын нийлбэр: " + sum;
-        // } else {
-        //   result = "3-н оронтой тоо оруулна уу?";
-        // }
+          sum = digit1 + digit2 + digit3;
+          result = "цифрүүдын нийлбэр: " + sum;
+        } else {
+          result = "3-н оронтой тоо оруулна уу?";
+        }
 
         document.getElementById("garalt").innerText = result; //
       }
