@@ -58,30 +58,70 @@
     <script>
       function doSomething() {
         const oroltElement = Number(document.getElementById("orolt").value); // Element-ee buhleer n avah
+        let n = oroltElement;
         let result = "";
+        let chess = "";
+        // for (j = 0; j < n; j++) {
+        //   for (i = 0; i < n; i++) {
+        //     result = result + "*";
+        //   re}
+        //   result = result + "\n";
+        // }
 
-        const date = {
-          year: 1998,
-          month: 11,
-          day: 26,
-          time: 10,
-          minut: 23,
-          second: 12,
-        };
-        console.log(date);
-        result =
-          date.year +
-          "-" +
-          date.month +
-          "-" +
-          date.day +
-          " " +
-          date.time +
-          ":" +
-          date.minut +
-          ":" +
-          date.second;
+        // for (j = 0; j < n; j++) {
+        //   if (j == 0 || j == n - 1) {
+        //     for (i = 0; i < n; i++) {
+        //       chess = chess + "* ";
+        //     }
+        //   } else {
+        //     for (i = 0; i < n; i++) {
+        //       if (i == 0 || i == n - 1) {
+        //         chess = chess + "* ";
+        //       } else {
+        //         chess = chess + "  ";
+        //       }
+        //     }
+        //   }
+        //   chess = chess + "\n";
+        // }
+        // result = chess;
 
+        // for (j = n - 1; j >= 0; j--) {
+        //   for (i = 0; i < n - j; i++) {
+        //     result = result + "* ";
+        //   }
+        //   result = result + "\n";
+        // }
+
+        // for (j = n - 1; j >= 0; j--) {
+        //   for (k = 0; k < j; k++) {
+        //     result = result + " ";
+        //   }
+        //   for (i = 0; i < n - j; i++) {
+        //     result = result + "* ";
+        //   }
+        //   result = result + "\n";
+        // }
+
+        for (j = n - 1; j >= 0; j--) {
+          for (k = 0; k < j; k++) {
+            result = result + " ";
+          }
+          if (j == 0) {
+            for (i = 0; i < n - j; i++) {
+              result = result + "* ";
+            }
+          } else {
+            for (i = 0; i < n - j; i++) {
+              if (i == 0 || i == n - j - 1) {
+                result = result + "* ";
+              } else {
+                result = result + "  ";
+              }
+            }
+          }
+          result = result + "\n";
+        }
         document.getElementById("garalt").innerText = result; //
       }
     </script>

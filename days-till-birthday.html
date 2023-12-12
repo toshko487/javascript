@@ -58,30 +58,24 @@
     <script>
       function doSomething() {
         const oroltElement = Number(document.getElementById("orolt").value); // Element-ee buhleer n avah
-        let result = "";
+        let result = Date();
 
-        const date = {
-          year: 1998,
-          month: 11,
-          day: 26,
-          time: 10,
-          minut: 23,
-          second: 12,
-        };
+        const dayofweek = [
+          "Monday",
+          "Tueday",
+          "Wednesday",
+          "Thursday",
+          "Triday",
+          "Saturday",
+          "Sunsay",
+        ];
+
+        const date = new Date();
         console.log(date);
-        result =
-          date.year +
-          "-" +
-          date.month +
-          "-" +
-          date.day +
-          " " +
-          date.time +
-          ":" +
-          date.minut +
-          ":" +
-          date.second;
-
+        console.log("жил" + "-" + date.getFullYear());
+        console.log("сар" + "-" + date.getMonth());
+        console.log("өдөр" + "-" + date.getDate());
+        console.log(date.getTime() / 100 / 60 / 60 / 24 / 365);
         document.getElementById("garalt").innerText = result; //
       }
     </script>
