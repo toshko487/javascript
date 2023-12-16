@@ -74,11 +74,12 @@
         // }
         // 1 2 3 6 10 15 21
         let bn = 0;
-        for (k = 0; k < n; k = bn + k) {
-          for (i = k + 1; i < k + k + 1; i++) {
-            result = result + i + " ";
+
+        for (k = 0; k < n; k++) {
+          for (i = k + bn; i < k + bn + k + 1; i++) {
+            result = result + (i + 1) + " ";
           }
-          bn = bn + 1;
+          bn = bn + k;
           result += "\n";
         }
         // for (i = 0; i < 1; i++) {
