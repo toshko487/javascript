@@ -60,6 +60,9 @@
         const oroltElement = Number(document.getElementById("orolt").value); // Element-ee buhleer n avah
         let result = "";
         let n = oroltElement;
+
+        //bodlogo1
+
         // for (m = 0; m < n; m++) {
         //   for (i = 0; i < n - m - 1; i++) {
         //     result = result + "  ";
@@ -72,7 +75,9 @@
         //   }
         //   result = result + "\n";
         // }
-        // 1 2 3 6 10 15 21
+
+        //bodlogo2
+
         let bn = 0;
 
         for (k = 0; k < n; k++) {
@@ -82,27 +87,6 @@
           bn = bn + k;
           result += "\n";
         }
-        // for (i = 0; i < 1; i++) {
-        //   result = result + (i + 1) + " ";
-        // }
-        // result = result + "\n";
-        // for (i = 1; i < 3; i++) {
-        //   result = result + (i + 1) + " ";
-        // }
-        // result = result + "\n";
-        // for (i = 3; i < 6; i++) {
-        //   result = result + (i + 1) + " ";
-        // }
-        // result = result + "\n";
-        // for (i = 6; i < 10; i++) {
-        //   result = result + (i + 1) + " ";
-        // }
-        // for (m = 0; m < n; m = m + m) {
-        //   for (i = 0; i < m; i++) {
-        //     result = result + (i + 1);
-        //   }
-        //   result = result + "\n";
-        // }
 
         console.log(result);
         document.getElementById("garalt").innerText = result; //
