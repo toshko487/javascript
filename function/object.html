@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let person = {
+        firstnName: "Madrin",
+        lastName: "Anya",
+        age: 23,
+        gender: "male",
+        adsress: {
+          street: "123 main street",
+          city: "anytown",
+        },
+        birthDay: function () {
+          this.age++;
+          console.log(this.age);
+        },
+      };
+      person.birthDay();
+    </script>
+  </body>
+</html>
