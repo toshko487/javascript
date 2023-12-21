@@ -79,6 +79,21 @@
         }
       }
 
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * (max + 1));
+        console.log(Math.floor);
+      }
+
+      function generateFood() {
+        const food = document.getElementById("snakeFood");
+
+        let foodPositionTop = getRandomInt(380);
+        let foodPositionLeft = getRandomInt(380);
+
+        food.style.left = foodPositionLeft;
+        food.style.top = foodPositionTop;
+      }
+
       function gameloop() {
         const head = document.getElementById("snakeHead");
 
@@ -96,7 +111,6 @@
             goLeft();
             break;
         }
-        console.log(snakePositionLeft, snakePositionTop);
 
         head.style.left = snakePositionLeft + "px";
         head.style.top = snakePositionTop + "px";
