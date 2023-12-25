@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(./kelly-sikkema-7rq8zzRBWG0-unsplash.jpg);
+  background-size: 100vw;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-size: 100vw;
+}
+.section {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+  gap: 20px;
+}
+.item {
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(195, 196, 192);
+}
+.section-title {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  margin: 5px;
+}
+.section-add {
+  display: flex;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 5px;
+  height: 40px;
+  align-items: center;
+}
+.section-add:hover {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
