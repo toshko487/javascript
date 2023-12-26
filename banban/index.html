@@ -11,21 +11,65 @@
       <div class="section">
         <div class="item">
           <h1 class="section-title">To do</h1>
-          <h4 class="section-add">+ Add card</h4>
+          <h4 class="section-add" onclick="showmodal()">+ Add card</h4>
         </div>
         <div class="item">
           <h1 class="section-title">In porress</h1>
-          <h4 class="section-add">+ Add card</h4>
+          <h4 class="section-add" onclick="showmodal()">+ Add card</h4>
         </div>
         <div class="item">
           <h1 class="section-title">Stuck</h1>
-          <h4 class="section-add">+ Add card</h4>
+          <h4 class="section-add" onclick="showmodal()">+ Add card</h4>
         </div>
         <div class="item">
           <h1 class="section-title">Done</h1>
-          <h4 class="section-add">+ Add card</h4>
+          <h4 class="section-add" onclick="showmodal()">+ Add card</h4>
+        </div>
+      </div>
+      <div class="add-task" id="add-card">
+        <div class="add-task-bg" onclick="hidemodal()"></div>
+        <div class="add-task-card">
+          <h1>Add Task</h1>
+          <div>
+            <h2>Title</h2>
+            <input class="title-input" type="text" name="title" id="" />
+          </div>
+          <div>
+            <h2>Description</h2>
+            <input class="description-imput" type="text" name="title" id="" />
+          </div>
+          <div class="status">
+            <h2>Status</h2>
+            <select class="status-select" name="" id="">
+              <option value="">To do</option>
+              <option value="">In porress</option>
+              <option value="">Stuck</option>
+              <option value="">Done</option>
+            </select>
+          </div>
+          <div class="status">
+            <h2>Priority</h2>
+            <select class="status-select" name="" id="">
+              <option value="">Low</option>
+              <option value="">Medium</option>
+              <option value="">High</option>
+            </select>
+          </div>
+          <div class="add">
+            <h2>Add Task</h2>
+          </div>
         </div>
       </div>
     </div>
+    <script>
+      function showmodal() {
+        const modal = document.getElementById("add-card");
+        modal.style.display = "flex";
+      }
+      function hidemodal() {
+        const modal = document.getElementById("add-card");
+        modal.style.display = "none";
+      }
+    </script>
   </body>
 </html>
