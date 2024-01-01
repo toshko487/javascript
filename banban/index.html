@@ -5,12 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
       <div class="section">
         <div class="item">
           <h1 class="section-title">To do</h1>
+          <div id="todotasks">
+            <div class="item-task">
+              <div>
+                <i class="fa-regular fa-circle-check"></i>
+              </div>
+              <div class="item-task-title">
+                <h3>todo</h3>
+                <h2>to do is to o</h2>
+                <h3 class="item-status">high</h3>
+              </div>
+              <div>
+                <i class="fa-regular fa-circle-xmark"></i>
+                <br />
+                <i class="fa-regular fa-pen-to-square"></i>
+              </div>
+            </div>
+          </div>
           <button class="section-add" onclick="showmodal()">+ Add card</button>
         </div>
         <div class="item">
@@ -32,16 +53,17 @@
           <h1>Add Task</h1>
           <div>
             <label for="task-title">Title</label>
+            <br />
             <input
               id="task-title"
               class="title-input"
               type="text"
               name="title"
-              id=""
             />
           </div>
           <div>
             <label for="task-description">Description</label>
+            <br />
             <textarea
               class="description-input"
               name=""
@@ -52,24 +74,22 @@
           </div>
           <div class="status">
             <h2>Status</h2>
-            <select class="status-select" name="" id="">
-              <option value="">To do</option>
-              <option value="">In porress</option>
-              <option value="">Stuck</option>
-              <option value="">Done</option>
+            <select class="status-select" name="Status" id="">
+              <option value="To do">To do</option>
+              <option value="In porress">In porress</option>
+              <option value="Stuck">Stuck</option>
+              <option value="Done">Done</option>
             </select>
           </div>
           <div class="status">
             <h2>Priority</h2>
-            <select class="status-select" name="" id="">
-              <option value="">Low</option>
-              <option value="">Medium</option>
-              <option value="">High</option>
+            <select class="status-select" name="Priority" id="Priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </select>
           </div>
-          <div class="add">
-            <h2>Add Task</h2>
-          </div>
+          <button class="add" onclick="addtask()">Add Task</button>
         </div>
       </div>
     </div>
@@ -81,6 +101,37 @@
       function hidemodal() {
         const modal = document.getElementById("add-card");
         modal.style.display = "none";
+      }
+      function addtask() {
+        const title = document.getElementById("task-title").value;
+        const description = document.getElementById("task-description").value;
+        const priority = document.getElementById("Priority").value;
+
+        const taskHTML = `
+            <div class="item-task">
+              <div>
+                <i class="fa-regular fa-circle-check"></i>
+              </div>
+              <div class="item-task-title">
+                <h3>${title}</h3>
+                <h2>${description}</h2>
+                <h3 class="item-status">${priority}</h3>
+              </div>
+              <div>
+                <i class="fa-regular fa-circle-xmark"></i>
+                <br />
+                <i class="fa-regular fa-pen-to-square"></i>
+              </div>
+            </div>`;
+
+        const todoElement = document.getElementById("todotasks");
+        todoElement.innerHTML = todoElement.innerHTML + taskHTML;
+        hidemodal();
+        resetForm();
+      }
+      function resetForm() {
+        document.getElementById("task-title").value = "";
+        document.getElementById("task-description").value = "";
       }
     </script>
   </body>

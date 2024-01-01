@@ -89,8 +89,32 @@ html {
   background-color: black;
   border-radius: 5px;
   padding: 10px;
+  border: none;
 }
 h2 {
   font-size: 16px;
   font-weight: 500;
+}
+.item-task {
+  display: flex;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.item-status {
+  border-radius: 5px;
+  padding: 3px;
+  border: 1px solid black;
+  font-size: 16px;
+  font-weight: 500;
+  width: fit-content;
+}
+.item-task-title {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
 }
