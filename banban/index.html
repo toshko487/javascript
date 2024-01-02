@@ -15,36 +15,31 @@
       <div class="section">
         <div class="item">
           <h1 class="section-title">To do</h1>
-          <div id="todotasks">
-            <div class="item-task">
-              <div>
-                <i class="fa-regular fa-circle-check"></i>
-              </div>
-              <div class="item-task-title">
-                <h3>todo</h3>
-                <h2>to do is to o</h2>
-                <h3 class="item-status">high</h3>
-              </div>
-              <div>
-                <i class="fa-regular fa-circle-xmark"></i>
-                <br />
-                <i class="fa-regular fa-pen-to-square"></i>
-              </div>
-            </div>
-          </div>
-          <button class="section-add" onclick="showmodal()">+ Add card</button>
+          <div id="todotasks"></div>
+          <button class="section-add" onclick="showmodal('todotasks')">
+            + Add card
+          </button>
         </div>
         <div class="item">
           <h1 class="section-title">In porress</h1>
-          <button class="section-add" onclick="showmodal()">+ Add card</button>
+          <div id="InPorressTasks"></div>
+          <button class="section-add" onclick="showmodal('InPorressTasks')">
+            + Add card
+          </button>
         </div>
         <div class="item">
           <h1 class="section-title">Stuck</h1>
-          <button class="section-add" onclick="showmodal()">+ Add card</button>
+          <div id="stuckTasks"></div>
+          <button class="section-add" onclick="showmodal('stuckTasks')">
+            + Add card
+          </button>
         </div>
         <div class="item">
           <h1 class="section-title">Done</h1>
-          <button class="section-add" onclick="showmodal()">+ Add card</button>
+          <div id="doneTasks"></div>
+          <button class="section-add" onclick="showmodal('doneTasks')">
+            + Add card
+          </button>
         </div>
       </div>
       <div class="add-task" id="add-card">
@@ -94,9 +89,11 @@
       </div>
     </div>
     <script>
-      function showmodal() {
+      let curentTarget = "todotasks";
+      function showmodal(targetId) {
         const modal = document.getElementById("add-card");
         modal.style.display = "flex";
+        curentTarget = targetId;
       }
       function hidemodal() {
         const modal = document.getElementById("add-card");
@@ -124,7 +121,7 @@
               </div>
             </div>`;
 
-        const todoElement = document.getElementById("todotasks");
+        const todoElement = document.getElementById(curentTarget);
         todoElement.innerHTML = todoElement.innerHTML + taskHTML;
         hidemodal();
         resetForm();
