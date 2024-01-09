@@ -68,17 +68,24 @@
             ></textarea>
           </div>
           <div class="status">
-            <h2>Status</h2>
-            <select class="status-select" name="Status" id="">
-              <option value="To do">To do</option>
-              <option value="In porress">In porress</option>
+            <label for="taskStatus">Status</label>
+            <br />
+            <select id="taskStatus" class="status-select" name="Status" id="">
+              <option value="Todo">To do</option>
+              <option value="InPorress">In porress</option>
               <option value="Stuck">Stuck</option>
               <option value="Done">Done</option>
             </select>
           </div>
           <div class="status">
-            <h2>Priority</h2>
-            <select class="status-select" name="Priority" id="Priority">
+            <label for="taskPriotiry">Priority</label>
+            <br />
+            <select
+              id="taskPriotiry"
+              class="status-select"
+              name="Priority"
+              id="Priority"
+            >
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
               <option value="High">High</option>
@@ -89,22 +96,48 @@
       </div>
     </div>
     <script>
-      let curentTarget = "todotasks";
-      function showmodal(targetId) {
-        const modal = document.getElementById("add-card");
-        modal.style.display = "flex";
-        curentTarget = targetId;
-      }
-      function hidemodal() {
-        const modal = document.getElementById("add-card");
-        modal.style.display = "none";
-      }
-      function addtask() {
-        const title = document.getElementById("task-title").value;
-        const description = document.getElementById("task-description").value;
-        const priority = document.getElementById("Priority").value;
+      const tasks = [];
+      let statustasks = {
+        TodoTasks: [],
+        InProgressTasks: [],
+        StuckTasks: [],
+        DoneTasks: [],
+      };
 
-        const taskHTML = `
+      let curentTarget = "";
+      let generateId = 0;
+      let editingIndex;
+      const statuses = ["Todo", "InProgress", "Stuck", "Done"];
+
+      function renderTasks() {
+        statustasks = {
+          TodoTasks: [],
+          InProgressTasks: [],
+          StuckTasks: [],
+          DoneTasks: [],
+        };
+        for (let i = 0; i < tasks.length; i++) {
+          const task = tasks[i];
+          statustasks[task.status].push(task);
+        }
+        renderFromStatusTasks();
+      }
+
+      function renderFromStatusTasks() {
+        const TodoTasksElement = document.getElementById("TodoTasks");
+        const InProgressTasksElement =
+          document.getElementById("InProgressTasks");
+        const StuckTasksElement = document.getElementById("StuckTasks");
+        const DoneTasksElement = document.getElementById("DoneTasks");
+
+        let Todoresult = "";
+        let InProgressresult = "";
+        let Stucresult = "";
+        let Doneresult = "";
+
+        for (let k = 0; k < statuses.length; k++) {
+          const task = statustasks[statuses[k]][i];
+          const taskHTML = `
             <div class="item-task">
               <div>
                 <i class="fa-regular fa-circle-check"></i>
@@ -115,21 +148,76 @@
                 <h3 class="item-status">${priority}</h3>
               </div>
               <div>
-                <i class="fa-regular fa-circle-xmark"></i>
+                <i onclick="removeTasks(${i})" class="fa-regular fa-circle-xmark"></i>
                 <br />
-                <i class="fa-regular fa-pen-to-square"></i>
+                <i onclick="editTasks(${i})" class="fa-regular fa-pen-to-square"></i>
               </div>
             </div>`;
+          TodoTasksElement.innerHTML = Todoresult;
+          InProgressTasksElement.innerHTML = InProgressresult;
+          StuckTasksElement.innerHTML = Stucresult;
+          DoneTasksElement.innerHTML = Doneresult;
+        }
+      }
+      function addtask() {
+        const title = document.getElementById("task-title").value;
+        const description = document.getElementById("task-description").value;
+        const priority = document.getElementById("taskPriotiry").value;
 
-        const todoElement = document.getElementById(curentTarget);
-        todoElement.innerHTML = todoElement.innerHTML + taskHTML;
+        tasks.push({
+          id: generateId++,
+          title: title,
+          description: description,
+          priority: priority,
+        });
+
+        renderTasks();
         hidemodal();
         resetForm();
+      }
+
+      function updateTasks() {
+        const title = document.getElementById("task-title").value;
+        const description = document.getElementById("task-description").value;
+        const status = document.getElementById("taskStatus").value;
+        const priority = document.getElementById("taskPriotiry").value;
+
+        task[editingIndex].title = title;
+        task[editingIndex].description = description;
+        task[editingIndex].priority = priority;
+        task[editingIndex].status = status;
+
+        removetasks();
+        hidemodal();
+        resetForm();
+      }
+      function removetasks(index) {
+        if (confirm("are you sure?")) {
+          task.splice(index, 1);
+          renderTasks();
+        }
+      }
+      function editTasks(index) {
+        showmodal();
+        document.getElementById("task-Title").value = tasks[idenx].title;
+        document.getElementById("task-Description").value =
+          tasks[index].description;
+        editingIndex = index;
+      }
+      function showmodal(targetId) {
+        const modal = document.getElementById("add-card");
+        modal.style.display = "flex";
+        curentTarget = targetId;
+      }
+      function hidemodal() {
+        const modal = document.getElementById("add-card");
+        modal.style.display = "none";
       }
       function resetForm() {
         document.getElementById("task-title").value = "";
         document.getElementById("task-description").value = "";
       }
+      renderTasks();
     </script>
   </body>
 </html>
