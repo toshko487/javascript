@@ -109,19 +109,20 @@
       let editingIndex;
       const statuses = ["Todo", "InProgress", "Stuck", "Done"];
 
-      function renderTasks() {
-        statustasks = {
-          TodoTasks: [],
-          InProgressTasks: [],
-          StuckTasks: [],
-          DoneTasks: [],
-        };
-        for (let i = 0; i < tasks.length; i++) {
-          const task = tasks[i];
-          statustasks[task.status].push(task);
-        }
-        renderFromStatusTasks();
-      }
+      // function renderTasks() {
+      //   statustasks = {
+      //     TodoTasks: [],
+      //     InProgressTasks: [],
+      //     StuckTasks: [],
+      //     DoneTasks: [],
+      //   };
+      //   for (let i = 0; i < tasks.length; i++) {
+      //     const task = tasks[i];
+      //     statustasks[task.status].push(task);
+      //   }
+
+      //   // renderFromStatusTasks();
+      // }
 
       function renderFromStatusTasks() {
         const TodoTasksElement = document.getElementById("TodoTasks");
@@ -136,28 +137,44 @@
         let Doneresult = "";
 
         for (let k = 0; k < statuses.length; k++) {
-          const task = statustasks[statuses[k]][i];
+          const task = statustasks[statuses[k]];
           const taskHTML = `
-            <div class="item-task">
-              <div>
-                <i class="fa-regular fa-circle-check"></i>
-              </div>
-              <div class="item-task-title">
-                <h3>${title}</h3>
-                <h2>${description}</h2>
-                <h3 class="item-status">${priority}</h3>
-              </div>
-              <div>
-                <i onclick="removeTasks(${i})" class="fa-regular fa-circle-xmark"></i>
-                <br />
-                <i onclick="editTasks(${i})" class="fa-regular fa-pen-to-square"></i>
-              </div>
-            </div>`;
+                            <div class="item-task">
+                              <div>
+                                <i class="fa-regular fa-circle-check"></i>
+                              </div>
+                              <div class="item-task-title">
+                                <h3>${title}</h3>
+                                <h2>${description}</h2>
+                                <h3 class="item-status">${priority}</h3>
+                              </div>
+                              <div>
+                                <i onclick="removeTasks(${i})" class="fa-regular fa-circle-xmark"></i>
+                                <br />
+                                <i onclick="editTasks(${i})" class="fa-regular fa-pen-to-square"></i>
+                              </div>
+                            </div>
+                            `;
+          switch (task.status) {
+            case "todo":
+              todoResult += taskHtml;
+              break;
+            case "inprogress":
+              inprogressResult += taskHtml;
+              break;
+            case "stuck":
+              stuckResult += taskHtml;
+              break;
+            case "done":
+              doneResult += taskHtml;
+              break;
+          }
           TodoTasksElement.innerHTML = Todoresult;
           InProgressTasksElement.innerHTML = InProgressresult;
           StuckTasksElement.innerHTML = Stucresult;
           DoneTasksElement.innerHTML = Doneresult;
         }
+        console.log(todoResult);
       }
       function addtask() {
         const title = document.getElementById("task-title").value;
@@ -171,39 +188,39 @@
           priority: priority,
         });
 
-        renderTasks();
+        // renderTasks();
         hidemodal();
         resetForm();
       }
 
-      function updateTasks() {
-        const title = document.getElementById("task-title").value;
-        const description = document.getElementById("task-description").value;
-        const status = document.getElementById("taskStatus").value;
-        const priority = document.getElementById("taskPriotiry").value;
+      // function updateTasks() {
+      //   const title = document.getElementById("task-title").value;
+      //   const description = document.getElementById("task-description").value;
+      //   const status = document.getElementById("taskStatus").value;
+      //   const priority = document.getElementById("taskPriotiry").value;
 
-        task[editingIndex].title = title;
-        task[editingIndex].description = description;
-        task[editingIndex].priority = priority;
-        task[editingIndex].status = status;
+      //   task[editingIndex].title = title;
+      //   task[editingIndex].description = description;
+      //   task[editingIndex].priority = priority;
+      //   task[editingIndex].status = status;
 
-        removetasks();
-        hidemodal();
-        resetForm();
-      }
-      function removetasks(index) {
-        if (confirm("are you sure?")) {
-          task.splice(index, 1);
-          renderTasks();
-        }
-      }
-      function editTasks(index) {
-        showmodal();
-        document.getElementById("task-Title").value = tasks[idenx].title;
-        document.getElementById("task-Description").value =
-          tasks[index].description;
-        editingIndex = index;
-      }
+      //   removetasks();
+      //   hidemodal();
+      //   resetForm();
+      // }
+      // function removetasks(index) {
+      //   if (confirm("are you sure?")) {
+      //     task.splice(index, 1);
+      //     renderTasks();
+      //   }
+      // }
+      // function editTasks(index) {
+      //   showmodal();
+      //   document.getElementById("task-Title").value = tasks[idenx].title;
+      //   document.getElementById("task-Description").value =
+      //     tasks[index].description;
+      //   editingIndex = index;
+      // }
       function showmodal(targetId) {
         const modal = document.getElementById("add-card");
         modal.style.display = "flex";
@@ -217,7 +234,7 @@
         document.getElementById("task-title").value = "";
         document.getElementById("task-description").value = "";
       }
-      renderTasks();
+      // renderTasks();
     </script>
   </body>
 </html>
